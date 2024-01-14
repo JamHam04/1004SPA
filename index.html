@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fitness Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  </head>
+  <body>
+
+	
+
+    <header>
+        <h1>Fitness Tracker
+        <small class="text-muted">+ Health Journal</small>
+        </h1>
+        <hr>
+
+    </header>
+    <div class="container text-center">
+        <!--Daily Navigation buttons-->
+
+            <h1>
+                <button onclick="prevButton()" class="pr-2">
+                    <i class="bi bi-arrow-left float-left"></i>
+                </button>
+                <p id="date"></p>
+
+                
+
+                    
+
+                
+                    
+                <button onclick="nextButton()">
+                    <i class="bi bi-arrow-right float-right"></i>
+                </button>
+            </h1>
+
+            
+    </div>
+    <div class="container bg-light">
+    <table id="tablelog">
+        <div class="row">
+            <div class="col border">
+                <h1>Exercise Log:</h1>
+            </div>
+            <div class="col-sm-4 border collapse" id="HealthCol">
+                <h1>Daily Health Log:</h1> <!--While this is only a set amount of rows, perhaps include feature to add more "other" rows for any extra inputs a user requires?-->
+            </div>
+        </div>
+        
+        <!--Table of exercises including collapsible health columns using button below-->
+        <div class="row">
+            <div class="col border">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Exercise:">
+            </div>
+            <div class="col border">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Set Notes">
+            </div>
+            <div class="col-sm border collapse" id="HealthCol">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Health Data 1">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm border" id="reps">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Set 1 reps">
+            </div>
+            <div class="col-sm border">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Set Notes">
+            </div>
+            <div class="col-sm border collapse" id="HealthCol">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Health Data 2">
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm border" id="reps"> 
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Set 2 reps">
+            </div>
+            <div class="col-sm border">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Set Notes">
+            </div>
+            <div class="col-sm border collapse" id="HealthCol">
+                <input class="form-control form-control-sm form-control-plaintext" placeholder="Health Data 3">
+            
+            </div>
+        </div>
+        <button onclick="addExercise()">Add Exercise</button> <!--Add feature using javascript-->
+        <button data-bs-toggle="collapse" data-bs-target="#HealthCol">Daily Health Log</button>
+    </table>
+    </div>
+
+      
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <footer>
+        <hr>
+        This is the footer
+    </footer>
+
+    <script>
+        var todayDate = new Date();  //get full date
+        var date = todayDate.getDate() +' / '+ (todayDate.getMonth()+1) +" / "+ todayDate.getFullYear(); //Formats date to only include date (not time)
+        
+        //function nextDay() {
+            
+        var nextday = todayDate.getDate()+1 +' / '+ (todayDate.getMonth()+1) +" / "+ todayDate.getFullYear();
+        var prevday = todayDate.getDate()-1 +' / '+ (todayDate.getMonth()+1) +" / "+ todayDate.getFullYear();
+         //For loop to increase by i? (i increased each click of button) Change date -> todayDate?
+        //}
+        
+
+        //Set date functions
+        var element = document.getElementById('date').innerHTML = date; //Current date
+        let i = 0;
+
+        function nextButton() { //Call this function everytime the right button is clicked
+            const j = i + 1;
+            todayDate.setDate(todayDate.getDate()+j)
+            var nextday = todayDate.getDate() +' / '+ (todayDate.getMonth()+1) +" / "+ todayDate.getFullYear();
+            var element = document.getElementById('date').innerHTML = nextday;
+        }
+        function prevButton() { //Call this function everytime the left button is clicked
+            const j = i + 1;
+            todayDate.setDate(todayDate.getDate()-j)
+            var prevday = todayDate.getDate() +' / '+ (todayDate.getMonth()+1) +" / "+ todayDate.getFullYear();
+            var element = document.getElementById('date').innerHTML = prevday;
+        }
+        
+        ////////////////////////////////
+        //TABLE BUTTONS
+        ////////////////////////////////
+        function addExercise() {
+           
+            var element = document.getElementById('tablelog').innerHTML;
+            col1.innerHTML = "col";
+            col1.innerHTML = "col"; //Find a way to add block of html (for rows) with click of button
+        }
+
+    </script>
+  </body>
+
+  <!--
+    REFERENCES:
+    
+
+  -->
+</html>
